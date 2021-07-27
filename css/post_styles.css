@@ -1,11 +1,12 @@
 article {
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 36px;
-    width: 1000px;
-    font-family: "EB Garamond", serif;
-    font-size: 140%;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 1.4em;
 }
 
-main {
+main.post-main {
     display: flex;
     justify-content: center;
 }

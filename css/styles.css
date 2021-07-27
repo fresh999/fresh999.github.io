@@ -2,20 +2,34 @@ body {
     margin: 0px;
 }
 
+.container {
+    padding: 0px;
+    margin: auto;
+    max-width: 1200px;
+}
+
+header.page-header > h1 {
+    font-size: 4em;
+}
+
 .page-header {
     display: flex;
     justify-content: center;
-    font-family: "EB Garamond", serif;
+    font-family: "EB Garamond", Georgia, serif;
 }
 
 .nav-wrapper {
     display: flex;
-    padding: 38px;
+    padding: 5px;
+}
+
+hr {
+    color: LightGray;
+    margin: 1px;
 }
 
 .nav-wrapper >  div {
-    margin: 20px;
-    font-size: 0.9em;
+    margin: 10px;
     text-transform: uppercase;
 }
 
@@ -28,6 +42,7 @@ body {
 .nav-link-wrapper a {
     color: black;
     text-decoration: none;
+    font-size: 1.3em;
 }
 
 .nav-link-wrapper:hover {
@@ -38,12 +53,22 @@ body {
     color: black;
 }
 
+main.index-main {
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 1.4em;
+    float: left;
+    width: 70%;
+}
+
+aside.index-aside {
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 1.4em;
+    float: right;
+    width: 25%;
+}
+
 footer {
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    margin-left: 2px;
-    margin-right: 2px;
-    background-color: green;
-    color: #fff;
+    font-family: "EB Garamond", Georgia, serif;
+    display: inline-block;
+    width: 100%;
 }

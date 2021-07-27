@@ -1,0 +1,12 @@
+article {
+    padding: 36px;
+    width: 1000px;
+    font-family: "EB Garamond", serif;
+    font-size: 140%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+

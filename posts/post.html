@@ -11,8 +11,23 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>
+            window.MathJax = {
+                loader: {load: ['[tex]/mathtools']},
+                tex: {
+                    macros: {
+                        RR: "{\\bf R}",
+                        bold: ["{\\bf #1}", 1]
+                    },
+
+                    tags: 'ams',
+                    packages: {'[+]': ['mathtools']}
+                }
+            };
+        </script>
+        <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
     </head>
 
     <body>
@@ -35,17 +50,23 @@
             <main class="post-main">
                 <article>
                     <h2>
-                        Article title.
+                        A quick look at Lie groups.
                     </h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Today we take a quick look at the definition of a Lie group. A Lie group is a group that is simultaneously a differentiable manifold and such that the group operations are smooth. An example of a Lie group is \( \operatorname{GL}_n \mathbb{R} \), that is the set of all \( n \times n \) real matrices, together with the Euclidean topology (\( \operatorname{GL}_n \mathbb{R} \sim \mathbb{R}^{n^2} \))
+                    </p>
+                    <p>
+                        This is a not a proof.
                     </p>
                     <p>
                         This is a beautiful math equation:
-                        \[
-                            e^{i\pi} = 1
-                        \]
+                        \begin{equation}
+                            e^{i\pi} + 1 = 0
+                        \end{equation}
                     </p>
+                    <div class="definition" text='Prime numbers'>
+                        All odd numbers are prime.
+                    </div>
                 </article>
             </main>
 

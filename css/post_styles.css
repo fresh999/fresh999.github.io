@@ -11,3 +11,27 @@ main.post-main {
     justify-content: center;
 }
 
+.theorem, .definition {
+    display: block;
+    font-style: italic;
+}
+
+.theorem:before, {
+    content: "Theorem. ";
+    font-weight: bold;
+    font-style: normal;
+}
+
+.theorem[text]:before {
+    content: "Theorem (" attr(text) ") ";
+}
+
+.definition:before, {
+    content: "Definition. ";
+    font-weight: bold;
+    font-style: normal;
+}
+
+.definition[text]:before, .definition[text]:before {
+    content: "Theorem (" attr(text) ") ";
+}

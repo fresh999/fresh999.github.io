@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FreshBlog | Home</title>
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/post_styles.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+        <script>
+            window.MathJax = {
+                loader: {load: ['[tex]/mathtools']},
+                tex: {
+                    macros: {
+                        isoto: "{\\stackrel{\\sim}{\\smash{\\longrightarrow}\\rule{0pt}{0.4ex}}}"
+                    },
+
+                    tags: 'ams',
+                    packages: {'[+]': ['mathtools']}
+                }
+            };
+
+        </script>
+        <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+    </head>
+
+    <body>
+        \(
+            \let\existstemp\exists
+            \let\foralltemp\forall
+            \renewcommand{\exists}{\mkern18mu\existstemp\mkern2mu}
+            \renewcommand{\forall}{\mkern18mu\foralltemp\mkern2mu}
+        \)
+        <header class="page-header">
+            <h1>FreshBlog</h1>
+        </header>
+
+        <div class="container">
+            <hr>
+            <nav class="nav-wrapper">
+                <div class="nav-link-wrapper">
+                    <a href="index.html">Home</a>
+                </div>
+                <div class="nav-link-wrapper">
+                    <a href="posts.html">Posts</a>
+                </div>
+            </nav>
+            <hr>
+
+            <main class="post-main">
+                <article>
+                    <h2>
+                        A quick look at Lie groups.
+                    </h2>
+                    <p>In this post, we explain the concept of mathematical induction through a well-known example, that is the sum of the first \( n \) natural numbers.</p>
+
+                    <p>Mathematical induction is very useful and is employed quite frequently in top-level mathematics.</p>
+
+                    <p>
+                        Let us consider the sum
+                        \begin{equation}
+                            \sum_{j = 1}^n j
+                        \end{equation}
+                    </p>
+
+                    <p>We want to prove that it is equal to \( \frac{n(n+1)}{2} \) for all \( n \in \mathbb{N} \). It is trivial to see that the equality holds in the case \( n = 1 \). Suppose now now that it holds for \( n \in \mathbb{N} \) and let us prove that it also holds \( n + 1 \).</p>
+
+                    <p>
+                        \begin{align*}
+                            \sum_{j = 1}^{n+1} j &= \sum_{j = 1}^n j + n+1 \\
+                            &= \frac{n(n+1)}{2} + (n+1)\\
+                            &= \frac{(n+1)(n+2)}{2}
+                        \end{align*}
+                    </p>
+                </article>
+            </main>
+
+            <footer>
+                <hr><hr>
+                FreshBlog 2021
+            </footer>
+        </div>
+    </body>
+</html>

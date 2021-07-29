@@ -10,12 +10,33 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+        <script>
+            window.MathJax = {
+                loader: {load: ['[tex]/mathtools']},
+                tex: {
+                    macros: {
+                        isoto: "{\\stackrel{\\sim}{\\smash{\\longrightarrow}\\rule{0pt}{0.4ex}}}"
+                    },
 
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+                    tags: 'ams',
+                    packages: {'[+]': ['mathtools']}
+                }
+            };
+
+        </script>
+        <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
     </head>
 
     <body>
+        \(
+            \let\existstemp\exists
+            \let\foralltemp\forall
+            \renewcommand{\exists}{\mkern18mu\existstemp\mkern2mu}
+            \renewcommand{\forall}{\mkern18mu\foralltemp\mkern2mu}
+        \)
         <header class="page-header">
             <h1>FreshBlog</h1>
         </header>
@@ -35,17 +56,27 @@
             <main class="post-main">
                 <article>
                     <h2>
-                        Article title.
+                        A quick look at Lie groups.
                     </h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Today we take a quick look at the definition of a Lie group. A Lie group is a group that is simultaneously a differentiable manifold and such that the group operations are smooth. An example of a Lie group is \( \operatorname{GL}_n \mathbb{R} \), that is the set of all \( n \times n \) real matrices, together with the Euclidean topology (\( \operatorname{GL}_n \mathbb{R} \isoto \mathbb{R}^{n^2} \)). \( \forall x > 0 \exists n > 0 \)
+                    </p>
+                    <p>
+                        This is a not a proof.
                     </p>
                     <p>
                         This is a beautiful math equation:
-                        \[
-                            e^{i\pi} = 1
-                        \]
+                        \begin{equation}
+                            e^{i\pi} + 1 = 0
+                        \end{equation}
                     </p>
+                    <div class="definition" text='Prime numbers'>
+                        All odd numbers are prime.
+                    </div>
+
+                    <div class="proposition" text="Fundamental theorem of calculus">
+                        Every polynomial has a root in \( \mathbb{C} \).
+                    </div>
                 </article>
             </main>
 

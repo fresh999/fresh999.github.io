@@ -2,8 +2,8 @@ article {
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 36px;
-    font-family: "EB Garamond", Georgia, serif;
-    font-size: 1.4em;
+    width: 850px;
+    font-size: 1.2rem;
 }
 
 main.post-main {
@@ -11,27 +11,70 @@ main.post-main {
     justify-content: center;
 }
 
-.theorem, .definition {
+.theorem {
     display: block;
     font-style: italic;
+    padding: 30px;
 }
 
-.theorem:before, {
+.theorem:before {
     content: "Theorem. ";
     font-weight: bold;
     font-style: normal;
 }
 
 .theorem[text]:before {
-    content: "Theorem (" attr(text) ") ";
+    content: "Theorem (" attr(text) "). ";
 }
 
-.definition:before, {
+.proposition {
+    display: block;
+    font-style: italic;
+    padding: 30px;
+}
+
+.proposition:before {
+    content: "Proposition. ";
+    font-weight: bold;
+    font-style: normal;
+}
+
+.proposition[text]:before {
+    content: "Proposition (" attr(text) "). ";
+}
+
+.lemma {
+    display: block;
+    font-style: italic;
+    padding: 30px;
+}
+
+.lemma:before {
+    content: "Lemma. ";
+    font-weight: bold;
+    font-style: normal;
+}
+
+.lemma[text]:before {
+    content: "Lemma (" attr(text) "). ";
+}
+
+.definition {
+    display: block;
+}
+
+.definition:before {
     content: "Definition. ";
     font-weight: bold;
     font-style: normal;
 }
 
-.definition[text]:before, .definition[text]:before {
-    content: "Theorem (" attr(text) ") ";
+.definition[text]:before {
+    content: "Definition (" attr(text) "). ";
 }
+
+.MathJax_Display {
+    color: #FFF !important;
+}
+
+

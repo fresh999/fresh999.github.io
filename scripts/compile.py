@@ -1,5 +1,16 @@
 #!/usr/bin/env python
 
+import numpy as np
+
+# block is a list of strings
+def is_math_block(block):
+    math_openers = ['\\begin{equation', '\\begin{align']
+    for line in block:
+        for o in math_openers:
+            if o in line:
+                return True
+    return False
+
 class Block:
     # lines is a list of strings
     def __init__(self, lines, is_math=False):
@@ -45,67 +56,37 @@ class Post:
                     beg.append(i)
             for c in math_closers:
                 if c in line:
-                    end.append(i)
-        return list(zip(beg, end))
+                    end.append(i+1)
+        return [i for tup in zip(beg, end) for i in tup]
 
-    def get_post_blocks(self):
-        envs = self.find_math_envs()
-        math_blocks = []
-        reg_blocks = []
-        for i, (beg, end) in enumerate(envs):
-            math_blocks.append(Block(self.lines[beg : end+1], True))
-            if i == 0:
-                reg_blocks.append(Block(self.lines[:beg]))
-            else:
-                reg_blocks.append(Block(self.lines[envs[i-1][1] + 1 : beg]))
-        if envs[-1][1] != len(self.lines) - 1:
-            reg_blocks.append(Block(self.lines[envs[-1][1] + 1:]))
-        blocks = []
-        i = 0
-        while i < len(math_blocks):
-            blocks.append(reg_blocks[i])
-            blocks.append(math_blocks[i])
-            i += 1
-        if len(reg_blocks) > len(math_blocks):
-            blocks.append(reg_blocks[-1])
-        return blocks
+    def parse_post(self):
+        indices = self.find_math_envs()
+        blocks = [sl.tolist() for sl in np.split(self.lines, indices)]
+        return [Block(block, is_math_block(block)) for block in blocks]
 
     def insert_tags(self, blocks):
         for block in blocks:
             block.insert_tags()
         return blocks
 
-    def parser(self):
-        math_openers = ['\\begin{equation', '\\begin{align']
-        math_closers = ['\\end{equation', '\\end{align']
-        blocks = []
-        switch = False
-        i = 0
-        while i < len(self.lines):
-            for o in math_openers:
-                if o in self.lines[i]:
-                    for c in math_closers:
-                        while c not in self.lines[i]:
-                            i += 1
-
     def compile_post(self):
         self.get_post_lines()
-        blocks = self.get_post_blocks()
+        blocks = self.parse_post()
         return self.insert_tags(blocks)
 
-#    def find_thm_envs(self):
-#        thm_openers = ['\\begin{theorem}', '\\begin{proposition}', '\\begin{lemma}']
-#        thm_closers = ['\\end{equation}', '\\end{proposition}' '\\end{lemma}']
-#        beg = []
-#        end = []
-#        for i, line in enumerate(self.lines):
-#            for o in thm_openers:
-#                if o in line:
-#                    beg.append(i)
-#            for c in thm_closers:
-#                if c in line:
-#                    end.append(i)
-#        return zip(beg, end)
+    def find_thm_envs(self):
+        thm_openers = ['\\begin{theorem}', '\\begin{proposition}', '\\begin{lemma}']
+        thm_closers = ['\\end{equation}', '\\end{proposition}' '\\end{lemma}']
+        beg = []
+        end = []
+        for i, line in enumerate(self.lines):
+            for o in thm_openers:
+                if o in line:
+                    beg.append(i)
+            for c in thm_closers:
+                if c in line:
+                    end.append(i)
+        return zip(beg, end)
 
 
 if __name__ == '__main__':
@@ -113,14 +94,8 @@ if __name__ == '__main__':
     post = Post('../latex_posts/mathematical_induction.tex')
     blocks = post.compile_post()
 
-
     pars = [line for block in blocks for line in block.lines]
     print(''.join(pars))
-
-#    for block in post.math_blocks:
-#        print(block.lines)
-#    for block in post.blocks:
-#        print(block.lines)
 
 #    print(post.lines)
 #    print(''.join(post.lines))

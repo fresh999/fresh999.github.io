@@ -1,0 +1,85 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{titlesec}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\hypersetup{
+    colorlinks=true,
+    allcolors=black,
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+
+\renewcommand\qedsymbol{$\square$}
+\renewcommand{\theenumi}{(\roman{enumi})}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\let\existstemp\exists
+\let\foralltemp\forall
+\renewcommand{\exists}{\mkern18mu\existstemp\mkern2mu}
+\renewcommand{\forall}{\mkern18mu\foralltemp\mkern2mu}
+
+\newcommand\isoto{\stackrel{\sim}{\smash{\longrightarrow}\rule{0pt}{0.4ex}}}
+
+\usepackage[toc]{appendix}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage[inline]{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathtools}
+\usepackage{physics}
+%\usepackage{subfiles}
+\usepackage{tikz-cd}
+
+\begin{document}
+
+Today we take a quick look at the definition of a Lie group. A Lie group is a group that is simultaneously a differentiable manifold and such that the group operations are smooth. An example of a Lie group is \( \operatorname{GL}_n \mathbb{R} \), that is the set of all \( n \times n \) real matrices, together with the Euclidean topology (\( \operatorname{GL}_n \mathbb{R} \sim \mathbb{R}^{n^2} \))
+
+\begin{proof}
+    This is a not a proof.
+\end{proof}
+
+Hey
+
+\begin{equation}
+    n = 2
+\end{equation}
+
+\begin{theorem}
+    Hey
+\end{theorem}
+
+\begin{lemma}
+    Hey
+\end{lemma}
+
+hòsikjdvbksljvb
+
+\begin{proposition}
+    Hey hey
+    \begin{equation}
+        n = 2056
+    \end{equation}
+\end{proposition}
+
+\begin{enumerate}
+    \item First item
+    \item second item
+    \item third item
+\end{enumerate}
+
+\end{document}

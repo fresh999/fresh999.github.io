@@ -1,0 +1,73 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{titlesec}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\hypersetup{
+    colorlinks=true,
+    allcolors=black,
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+
+\renewcommand\qedsymbol{$\square$}
+\renewcommand{\theenumi}{(\roman{enumi})}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\let\existstemp\exists
+\let\foralltemp\forall
+\renewcommand{\exists}{\mkern18mu\existstemp\mkern2mu}
+\renewcommand{\forall}{\mkern18mu\foralltemp\mkern2mu}
+
+\newcommand\isoto{\stackrel{\sim}{\smash{\longrightarrow}\rule{0pt}{0.4ex}}}
+
+\usepackage[toc]{appendix}
+%\usepackage[backend=biber, style=numeric]{biblatex}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage[inline]{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathtools}
+\usepackage{physics}
+%\usepackage{subfiles}
+\usepackage{tikz-cd}
+
+\begin{document}
+
+In this post, we explain the concept of mathematical induction through a well-known example, that is the sum of the first \( n \) natural numbers.
+
+Mathematical induction is very useful and is employed quite frequently in top-level mathematics.
+
+Let us consider the sum
+\begin{equation}
+    \sum_{j = 1}^n j
+\end{equation}
+
+We want to prove that it is equal to \( \frac{n(n+1)}{2} \) for all \( n \in \mathbb{N} \). It is trivial to see that the equality holds in the case \( n = 1 \). Suppose now now that it holds for \( n \in \mathbb{N} \) and let us prove that it also holds \( n + 1 \).
+
+\begin{align*}
+    \sum_{j = 1}^{n+1} j &= \sum_{j = 1}^n j + n+1 \\
+    &= \frac{n(n+1)}{2} + (n+1)\\
+    &= \frac{(n+1)(n+2)}{2}
+\end{align*}
+\begin{equation}
+    n = 1
+\end{equation}
+\begin{equation}
+    n = 2
+\end{equation}
+
+\end{document}

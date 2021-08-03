@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import argparse
+import markdown
 import numpy as np
 
 thm_envs = ['theorem', 'proposition', 'lemma', 'proof']
@@ -124,16 +126,27 @@ class Post:
         blocks = [block for chunk in chunks for block in chunk.blocks]
         return blocks
 
+class MarkdownCompiler:
+    def __init__(self, post_filename):
+        with open(post_filename, 'r') as post:
+            self.md_content = post.read()
+            self.html_content = markdown.markdown(self.md_content, extensions=['fenced_code', 'attr_list'])
 
 if __name__ == '__main__':
 
-    post = Post('../latex_posts/article.tex')
-    blocks = post.compile_post()
+    parser = argparse.ArgumentParser(description='Compiles blog post written in LaTeX or Markdown')
+    parser.add_argument('--input', type=str, default=None, help='The source code for the blog post')
 
-    pars = [line for block in blocks for line in block.lines]
-    print(''.join(pars))
+    args = parser.parse_args()
+    if not args.input:
+        print('No input file provided')
+        exit(0)
 
-#    print(post.lines)
-#    print(''.join(post.lines))
+#    post = Post(args.input)
+#    blocks = post.compile_post()
+#    pars = [line for block in blocks for line in block.lines]
+#    print(''.join(pars))
 
+    md_compiler = MarkdownCompiler(args.input)
+    print(md_compiler.html_content)
 

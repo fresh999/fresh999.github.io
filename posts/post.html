@@ -28,9 +28,10 @@
         <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
         </script>
+
     </head>
 
-    <body>
+    <body onload="PR.prettyPrint()">
         \(
             \let\existstemp\exists
             \let\foralltemp\forall
@@ -78,23 +79,36 @@
                         Every polynomial has a root in \( \mathbb{C} \).
                     </div>
 
-                    <p>This is some code</p>
-                    <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func():</span>
-                    <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span></span></code></pre></div>
-                    <p>Very easy!</p>
-
-                    <p>
-                        Hey!
-                    </p>
-
-                    <div class="proposition" text="Fundamental theorem of calculus">
-                        Every polynomial has a root in \( \mathbb{C} \). Hello
-                    </div>
+                    <pre>
+                        <code id="the-code">
+                            def func():
+                                a = 2
+                                return a ** 2
+                        </code>
+                    </pre>
 
                     <p>This is some code</p>
-                    <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">def</span> func():</a>
-                    <a class="sourceLine" id="cb1-2" title="2">    <span class="cf">return</span> <span class="dv">1</span></a></code></pre></div>
+                    <pre><code class="prettyprint" id="the-code">def func():
+                        return 1
+                    </code></pre>
+                    <p>This is some <code>my_str = 'inline string'</code> inline code.</p>
                     <p>Very easy!</p>
+                    <p>This is a list</p>
+                    <ul>
+                    <li>first item</li>
+                    <li>second item</li>
+                    <li>third item</li>
+                    </ul>
+                    <p><a href="https://en.wikipedia.org/wiki/Adrien-Marie_Legendre">Legendre</a></p>
+
+                    <p>Here is an example of AppleScript:</p>
+
+                    <pre><code class="prettyprint" id="the-code">    def func():
+                        return 1
+                    </code></pre>
+                    <pre><code class="prettyprint" id="the-code">def func():
+                        return 1
+                    </code></pre>
 
                 </article>
             </main>
@@ -103,6 +117,6 @@
                 <hr><hr>
                 FreshBlog 2021
             </footer>
-        </div>
+        <script type="text/javascript" src="../scripts/js/indent.js"></script>
     </body>
 </html>

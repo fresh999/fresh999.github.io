@@ -73,8 +73,17 @@ main.post-main {
     content: "Definition (" attr(text) "). ";
 }
 
-.MathJax_Display {
-    color: #FFF !important;
+pre code {
+    display: block;
+    background: #F0F0F0;
+    font-size: 1rem;
+    overflow-x: auto;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 15px;
 }
 
+pre {
+    text-align: start;
+}
 

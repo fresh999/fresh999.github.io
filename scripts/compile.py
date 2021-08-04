@@ -130,7 +130,7 @@ class MarkdownCompiler:
     def __init__(self, post_filename):
         with open(post_filename, 'r') as post:
             self.md_content = post.read()
-            self.html_content = markdown.markdown(self.md_content, extensions=['fenced_code', 'attr_list'])
+            self.html_content = markdown.markdown(self.md_content, extensions=['fenced_code', 'attr_list', 'meta'])
 
 if __name__ == '__main__':
 

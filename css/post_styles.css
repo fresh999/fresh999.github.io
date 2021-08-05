@@ -11,6 +11,12 @@ main.post-main {
     justify-content: center;
 }
 
+main.post-main article h1 {
+    color: black;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 2.5rem;
+}
+
 .theorem {
     display: block;
     font-style: italic;
@@ -71,19 +77,5 @@ main.post-main {
 
 .definition[text]:before {
     content: "Definition (" attr(text) "). ";
-}
-
-pre code {
-    display: block;
-    background: #F0F0F0;
-    font-size: 1rem;
-    overflow-x: auto;
-    max-width: 100%;
-    min-width: 100px;
-    padding: 15px;
-}
-
-pre {
-    text-align: start;
 }
 

@@ -32,6 +32,7 @@ h3 {
 h2 {
     color: black;
     font-family: "EB Garamond", Georgia, serif;
+    padding: 0;
 }
 
 hr {
@@ -88,26 +89,30 @@ aside.index-aside {
     font-size: 1.2rem;
 }
 
-.index-aside > h2 {
+.index-aside > h1 {
     margin-bottom: 0;
     color: black;
     font-size: 2.5rem;
+    font-weight: normal;
 }
 
-.index-aside > h3 {
+.index-aside > h2 {
     color: #A8A8A8;
     font-size: 1.7rem;
+    font-weight: normal;
+}
+
+.index-main > h1 {
+    margin-bottom: 0;
+    color: black;
+    font-size: 2.5rem;
+    font-weight: normal;
 }
 
 .index-main > h2 {
-    margin-bottom: 0;
-    color: black;
-    font-size: 2.5rem;
-}
-
-.index-main > h3 {
     color: #A8A8A8;
     font-size: 1.7rem;
+    font-weight: normal;
 }
 
 footer {
@@ -127,22 +132,42 @@ div.post > span.post-date {
     margin-top: 0;
 }
 
-div.post > h2.post-title a.post-link {
-    font-size: 2.1rem;
-    color: black;
-    margin-bottom: 0;
-    text-decoration: none;
-}
-
-div.post > h2.post-title a.post-link:hover {
-    text-decoration: underline;
-}
-
-.continue-reading > a {
+a {
     text-decoration: none;
     color: #1877F2;
 }
 
-.continue-reading > a:hover {
+a:hover {
     text-decoration: underline;
+}
+
+div.post > h1.post-title a.post-link {
+    font-size: 2.1rem;
+    color: black;
+    margin-bottom: 0;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+div.post > h1.post-title a.post-link:hover {
+    text-decoration: underline;
+}
+
+code {
+    font-size: 1rem;
+    padding: 5px;
+    background: #F0F0F0;
+    border-radius: 5px;
+}
+
+pre {
+    text-align: start;
+}
+
+pre code {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 15px;
 }

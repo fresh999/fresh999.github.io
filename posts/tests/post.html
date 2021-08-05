@@ -31,7 +31,7 @@
 
     </head>
 
-    <body onload="PR.prettyPrint()">
+    <body>
         \(
             \let\existstemp\exists
             \let\foralltemp\forall
@@ -56,9 +56,9 @@
 
             <main class="post-main">
                 <article>
-                    <h2>
+                    <h1>
                         A quick look at Lie groups.
-                    </h2>
+                    </h1>
                     <p>
                     Today we take a quick look at the definition of a Lie group. A Lie group is a group that is simultaneously a differentiable manifold and such that the group operations are smooth. An example of a Lie group is \( \operatorname{GL}_n \mathbb{R} \), that is the set of all \( n \times n \) real matrices, together with the Euclidean topology (\( \operatorname{GL}_n \mathbb{R} \isoto \mathbb{R}^{n^2} \)). \( \forall x > 0 \exists n > 0 \)
                     </p>
@@ -80,7 +80,7 @@
                     </div>
 
                     <pre>
-                        <code id="the-code">
+                        <code>
                             def func():
                                 a = 2
                                 return a ** 2
@@ -88,7 +88,7 @@
                     </pre>
 
                     <p>This is some code</p>
-                    <pre><code class="prettyprint" id="the-code">def func():
+                    <pre><code>def func():
                         return 1
                     </code></pre>
                     <p>This is some <code>my_str = 'inline string'</code> inline code.</p>
@@ -103,11 +103,14 @@
 
                     <p>Here is an example of AppleScript:</p>
 
-                    <pre><code class="prettyprint" id="the-code">    def func():
-                        return 1
-                    </code></pre>
-                    <pre><code class="prettyprint" id="the-code">def func():
-                        return 1
+                    <pre>
+                        <code>
+                            def func():
+                                return 1
+                        </code>
+                    </pre>
+                    <pre><code>def func():
+    return 1
                     </code></pre>
 
                 </article>
@@ -117,6 +120,6 @@
                 <hr><hr>
                 FreshBlog 2021
             </footer>
-        <script type="text/javascript" src="../scripts/js/indent.js"></script>
+        </div>
     </body>
 </html>

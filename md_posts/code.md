@@ -4,11 +4,15 @@ Authors: Waylan Limberg
          John Doe
 Date: October 2, 2007
 
-This is some code
+This is some awesome code
 
 ```{class=prettyprint}
 def func():
     return 1
+
+class Pappo:
+    def __init__(self):
+        pass
 ```
 
 

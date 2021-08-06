@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FreshBlog | Home</title>
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/post_styles.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+        <script>
+            window.MathJax = {
+                loader: {load: ['[tex]/mathtools']},
+                tex: {
+                    macros: {
+                        isoto: "{\\stackrel{\\sim}{\\smash{\\longrightarrow}\\rule{0pt}{0.4ex}}}"
+                    },
+
+                    tags: 'ams',
+                    packages: {'[+]': ['mathtools']}
+                }
+            };
+
+        </script>
+        <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+        <link rel="stylesheet" type="text/css" href="../google-code-prettify/prettify.css">
+        <script type="text/javascript" src="../google-code-prettify/prettify.js"></script>
+    </head>
+
+    <body onload="PR.prettyPrint()">
+        \(
+            \let\existstemp\exists
+            \let\foralltemp\forall
+            \renewcommand{\exists}{\mkern18mu\existstemp\mkern2mu}
+            \renewcommand{\forall}{\mkern18mu\foralltemp\mkern2mu}
+        \)
+        <header class="page-header">
+            <h1>FreshBlog</h1>
+        </header>
+
+        <div class="container">
+            <hr>
+            <nav class="nav-wrapper">
+                <div class="nav-link-wrapper">
+                    <a href="../index.html">Home</a>
+                </div>
+                <div class="nav-link-wrapper">
+                    <a href="../posts.html">Posts</a>
+                </div>
+            </nav>
+            <hr>
+
+            <main class="post-main">
+                <article>
+<h1>Welcome to my blog!</h1>
+<p>This is the first post on FreshBlog. As such, it is going to be an introduction to the origin, the purpose and the future developments of the blog.</p>
+<p>FreshBlog grew out of my desire to get into web development, together with the fact that it is the ideal place for me to share and discuss what I do on a daily basis, which goes from maths and physics to tinkering with software. The philosophy that underpins this project is that of minimalism, from the graphical side to the actual code that powers the blog. So, I decided to ditch all static site generators and just write some HTML and CSS myself.</p>
+<p>I only had two fundamental needs for the blog: it had to have LaTeX support (for maths and physics) and it should display source code blocks in a clean and readable way. I took care of the first point by using <a href="https://www.mathjax.org">MathJax</a>, which is very nice and popular (<a href="https://www.wikipedia.org">Wikipedia</a> also uses it). The second need is less straightforward. HTML supports code blocks but it is also quite cumbersome, especially for LaTeX enthusiasts like me. So the question was: how do I write my posts? Do I just grind out raw HTML or do I use something else? In the end, I decided to with <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, as it makes for very readable text.
+I used the <code class="prettyprint">python-markdown</code> Python module. Here is some of the code I wrote:</p>
+<pre><code class="prettyprint">class MarkdownCompiler:
+    def __init__(self, post_filename):
+        with open(post_filename, 'r') as post:
+            self.md_content = post.read()
+            md = markdown.Markdown(extensions=['fenced_code', 'attr_list', 'meta'])
+            self.html_content = md.convert(self.md_content).splitlines()
+            self.meta = md.Meta
+
+    def compile_template(self, template):
+        hook_idx = template.find_hooks()
+        if not hook_idx:
+            return self.html_content
+        title = '&lt;h1&gt;' + self.meta['title'][0] + '&lt;/h1&gt;'
+        return template.lines[:hook_idx] + [title] + self.html_content + template.lines[hook_idx + 1:]
+</code></pre>
+<p>Basically, this reads the Markdown post, converts it to HTML and uses a template to compile the final HTML blog post. I have also made use of some extensions of <code class="prettyprint">python-markdown</code>, which you can read all about at <a href="https://python-markdown.github.io/extensions/">Extensions</a>.</p>
+<p>Now, Markdown does support LaTeX, but I really like my LaTeX setup and I would like to be able to use LaTeX when writing blog posts strictly about maths or physics. This is why I am currently working on a LaTeX to HTML compiler, which I am going to blog about.</p>
+<p>There are many more projects on my to-do list and I am only going to reveal a couple. First, I would like to style the blog using animations. Second, I want to add a comments section.</p>
+<p>There you go! I am excited to launch the blog and I am looking forward to finishing the setup process. Stay fresh!</p>
+                </article>
+            </main>
+
+            <footer>
+                <hr><hr>
+                FreshBlog 2021
+            </footer>
+        </div>
+    </body>
+</html>

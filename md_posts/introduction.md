@@ -28,11 +28,11 @@ class MarkdownCompiler:
         return template.lines[:hook_idx] + [title] + self.html_content + template.lines[hook_idx + 1:]
 ```
 
-Basically, this reads the Markdown post, converts it to HTML and uses a template to compile the final HTML blog post. I have also made use of some extensions of `python-markdown`{class=prettyprint}, which you can read all about at [Extensions](https://python-markdown.github.io/extensions/).
+Basically, this reads the Markdown post, converts it to HTML and uses a template to compile the final HTML blog post. I have also made use of some extensions of `python-markdown`{class=prettyprint}, which you can read all about [here](https://python-markdown.github.io/extensions/). The main point of the code block above, though, is to show how code is rendered. Syntax highlighting is provided by [Google's code prettifier](https://github.com/googlearchive/code-prettify). I know, the script is no longer maintained but for now I am satified, although I do not rule out switching to some other syntax highlighter in the future.
 
 Now, Markdown does support LaTeX, but I really like my LaTeX setup and I would like to be able to use LaTeX when writing blog posts strictly about maths or physics. This is why I am currently working on a LaTeX to HTML compiler, which I am going to blog about.
 
-There are many more projects on my to-do list and I am only going to reveal a couple. First, I would like to style the blog using animations. Second, I want to add a comments section.
+There are many more projects on my to-do list and I am only going to reveal a couple. First, I would like to style the blog using animations, for which I am going to need to learn some JavaScript. Second, I want to add a comments section, to make this blog a lively and interactive place.
 
 There you go! I am excited to launch the blog and I am looking forward to finishing the setup process. Stay fresh!
 

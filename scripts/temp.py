@@ -10,11 +10,12 @@ list_envs = ['enumerate']
 math_envs = ['equation', 'align']
 thm_envs = ['theorem', 'proposition', 'lemma', 'proof']
 
-def find_outer_blocks(lines):
+def get_outer_subblocks(lines):
     indices = []
     env_count = 0
     for i, line in enumerate(lines):
-        if opening_p.match(line):
+        match = opening_p.match(line)
+        if match:
             env_count += 1
             if env_count == 1:
                 indices.append(i)
@@ -22,7 +23,9 @@ def find_outer_blocks(lines):
             env_count -= 1
             if env_count == 0:
                 indices.append(i+1)
-    return indices
+    blocks = [sl.tolist() for sl in np.split(lines, indices)]
+    blocks = list(filter(([]).__ne__, blocks))
+    return [Block(b) for b in blocks]
 
 def get_post_lines(lines):
     start = 0
@@ -37,7 +40,6 @@ def get_post_lines(lines):
 class Block:
     def __init__(self, lines):
         self.lines = lines
-        self.type = self.get_block_type()
 
     def get_block_type(self):
         if not self.lines:
@@ -45,17 +47,12 @@ class Block:
         pattern = re.compile(r'^\s*\\begin\{(.*)\}')
         m = pattern.match(self.lines[0])
         if m:
+            self.lines = self.lines[1:-1]
             return m.group(1)
 
-    def get_subblocks(self):
-        indices = find_outer_blocks(self.lines)
-        blocks = [sl.tolist() for sl in np.split(self.lines, indices)]
-        blocks = list(filter(([]).__ne__, blocks))
-        return [Block(b) for b in blocks]
-
     def process_block(self):
-        subblocks = self.get_subblocks()
-        print(self.lines)
+        subblocks = get_outer_subblocks(self.lines)
+        self.type = self.get_block_type()
         if len(subblocks) == 1:
             self.insert_tags()
             return self.lines
@@ -65,11 +62,11 @@ class Block:
         if not self.type:
             self.lines = ['<p>' + line.rstrip() + '</p>\n' for line in self.lines if not re.search(r'^\s*\n$', line)]
         elif self.type in thm_envs:
-            self.lines[0] = f'<div class="{self.type}">\n'
-            self.lines[-1] = '</div>\n'
+            self.lines.insert(0, f'<div class="{self.type}">\n')
+            self.lines.append('</div>\n')
         elif self.type in list_envs:
-            self.lines[0] = '<ol>\n'
-            self.lines[-1] = '</ol>\n'
+            self.lines.insert(0, '<ol>\n')
+            self.lines.append('</ol>\n')
             self.lines = [re.sub(r'\\item\s(.*)$', r'<li>\1</li>', line) for line in self.lines]
 
 

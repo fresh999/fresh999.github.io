@@ -79,6 +79,6 @@ main.post-main article h1 {
     content: "Definition (" attr(text) "). ";
 }
 
-.utterances-frame {
+.utterances {
     width : 850px;
 }

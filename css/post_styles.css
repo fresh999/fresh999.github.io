@@ -80,6 +80,5 @@ main.post-main article h1 {
 }
 
 .utterances {
-    max-width : 1000px;
-    font-size: 5.2rem;
+    max-width : 100%;
 }

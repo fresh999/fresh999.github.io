@@ -80,5 +80,5 @@ main.post-main article h1 {
 }
 
 .utterances {
-    width : 850px;
+    max-width : 2000px;
 }

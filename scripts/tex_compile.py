@@ -82,7 +82,7 @@ class Post(Block):
 
 if __name__ == '__main__':
 
-    post = Post('../latex_posts/art.tex')
+    post = Post('../latex_posts/article.tex')
 #    print(''.join(post.lines))
 
     print(''.join(post.process_block()))

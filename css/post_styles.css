@@ -79,3 +79,6 @@ main.post-main article h1 {
     content: "Definition (" attr(text) "). ";
 }
 
+.utterances {
+    max-width : 850px;
+}

@@ -20,7 +20,7 @@ class MarkdownCompiler:
     def __init__(self, post_filename):
         with open(post_filename, 'r') as post:
             self.md_content = post.read()
-            md = markdown.Markdown(extensions=['fenced_code', 'attr_list', 'meta'])
+            md = markdown.Markdown(extensions=['fenced_code', 'attr_list', 'meta', 'smarty'])
             self.html_content = md.convert(self.md_content).splitlines()
             self.meta = md.Meta
 

@@ -1,4 +1,4 @@
-Title: FreshParse: LaTeX for the Web
+Title: FreshParse - LaTeX for the Web
 Summary: Description of the LaTeX to HTML compiler FreshParse
 Authors: Fresh
 Date: August 22, 2021

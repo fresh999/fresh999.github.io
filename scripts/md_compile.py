@@ -33,7 +33,7 @@ class MarkdownCompiler:
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='Compiles blog post written in LaTeX or Markdown')
+    parser = argparse.ArgumentParser(description='Compiles blog post written in Markdown')
     parser.add_argument('--output-dir', type=str, default='../posts', help='The directory that stores the posts')
     parser.add_argument('--input', type=str, default=None, help='The source code for the blog post')
 

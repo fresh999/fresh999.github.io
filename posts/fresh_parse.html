@@ -57,7 +57,7 @@
 <p>Hi everyone and welcome back to a brand new post! Today we are going to be looking at FreshParse, a lightweight LaTeX to HTML compiler I just wrote. Let&rsquo;s dive right in!</p>
 <p>This project grew out of my love of LaTeX and my desire to use it on FreshBlog. The goal was to build a program that would insert paragraph tags, process mathematical environments and handle lists. Nothing too fancy.</p>
 <p>I knew nothing about compilers before starting out and my original approach was not successful. Basically, I was trying to process LaTeX code by identifying the outermost environments and then recursively analyzing the content of said environments. This approach made heavy use of regular expressions and I got stuck pretty quickly, as I could not get nested environments to work. Then I found out that compilers use <em>syntax-directed translation</em> and that I should write a lexer and a parser. At that point I was doubtful that I would ever see this through, as I knew nothing about parsing. I was stuck.</p>
-<p>Watching a <a href="https://en.wikipedia.org/wiki/Brian_Kernighan">Brian Kernighan</a> in which he explained the origins of the <a href="https://en.wikipedia.org/wiki/AWK">AWK</a> programming language, I found out about <a href="https://en.wikipedia.org/wiki/Lex_(software)">Lex</a> and <a href="https://en.wikipedia.org/wiki/Yacc">Yacc</a>, Unix tools that are used to write compilers and that Kernighan had used himself to implement AWK. My project suddenly had renewed hope and in three or four days I got a first running version of the compiler.</p>
+<p>Watching a <a href="https://en.wikipedia.org/wiki/Brian_Kernighan">Brian Kernighan</a> video in which he explained the origins of the <a href="https://en.wikipedia.org/wiki/AWK">AWK</a> programming language, I found out about <a href="https://en.wikipedia.org/wiki/Lex_(software)">Lex</a> and <a href="https://en.wikipedia.org/wiki/Yacc">Yacc</a>, Unix tools that are used to write compilers and that Kernighan had used himself to implement AWK. My project suddenly had renewed hope and in three or four days I got a first running version of the compiler.</p>
 <p>Lex works by detecting regular expressions and performing actions accordingly. Although it can be used on its own, it excels when used together with Yacc. Basically, Lex generates a stream of tokens for Yacc to parse. The combination of the two tools is so powerful that you could write a fully-fledged C compiler with it! I will not delve too much into Lex, but I will briefly discuss Yacc.</p>
 <p>Yacc takes a <em>grammar</em> and executes snippets of C code whenever a rule is recognized. This is a small part of the Yacc code for FreshParse:</p>
 <pre><code class="prettyprint">thm_env: thm env_content end_thm_like
@@ -74,6 +74,17 @@ items: env {print_indentation(indent_level); printf(&quot;&lt;/li&gt;\n&quot;);}
      ;
 </code></pre>
 <p>The first rule defines a theorem-like environment (the vertical bar <code>|</code> is a logical or). No C code is executed in this case. The second rules, instead, specifies what the content of a list should look like. First of all, note that this time C code is executed. Secondly, and more importantly, the second is rule is <em>recursive</em>. This is a very powerful mechanism that perfectly matches the idea of nested environments, which is ubiquitous in programming languages.</p>
+<p>FreshParse wraps sentences into <code>&lt;p&gt;</code> tags. As far as mathematics is concerned, it wraps theorems in <code>&lt;div&gt;</code> tags together with a <code>class</code> attribute, which is useful for CSS styling. For instance,</p>
+<pre><code class="prettyprint">\begin{lemma}
+    Suppose a non-empty partially ordered set P has the property that every non-empty chain has an upper bound in P. Then the set P contains at least one maximal element.
+\end{lemma}
+</code></pre>
+<p>get translated to</p>
+<pre><code>&lt;div class=&quot;lemma&quot;&gt;
+    Suppose a non-empty partially ordered set P has the property that every non-empty chain has an upper bound in P. Then the set P contains at least one maximal element.
+ &lt;/div&gt;
+</code></pre>
+<p>Also, it recognizes displayed math environments, such as <code>\begin{equation}</code> and does not alter them, as <a href="https://www.mathjax.org">MathJax</a> is capable of rendering them. Finally, it can processes lists by wrapping them in <code>&lt;ol&gt;</code> (or <code>&lt;ul&gt;</code>) tags.</p>
 <p>The code for FreshParse is available at <a href="https://github.com/fresh999/FreshParse">fresh999/FreshParse</a>. You are welcome to check it out and play with it. Comments and feedback are also highly appreciated!</p>
 <p>That&rsquo;s it for this one, folks! Till next time, stay fresh!</p>
                 </article>

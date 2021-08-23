@@ -34,14 +34,14 @@ The first rule defines a theorem-like environment (the vertical bar `|` is a log
 
 FreshParse wraps sentences into `<p>` tags. As far as mathematics is concerned, it wraps theorems in `<div>` tags together with a `class` attribute, which is useful for CSS styling. For instance,
 
-``` {class=prettyprint}
+```
 \begin{lemma}
     Suppose a non-empty partially ordered set P has the property that every non-empty chain has an upper bound in P. Then the set P contains at least one maximal element.
 \end{lemma}
 ```
 get translated to
 
-```
+``` {class=prettyprint}
 <div class="lemma">
     Suppose a non-empty partially ordered set P has the property that every non-empty chain has an upper bound in P. Then the set P contains at least one maximal element.
  </div>

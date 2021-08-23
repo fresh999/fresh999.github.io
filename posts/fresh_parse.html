@@ -75,12 +75,12 @@ items: env {print_indentation(indent_level); printf(&quot;&lt;/li&gt;\n&quot;);}
 </code></pre>
 <p>The first rule defines a theorem-like environment (the vertical bar <code>|</code> is a logical or). No C code is executed in this case. The second rules, instead, specifies what the content of a list should look like. First of all, note that this time C code is executed. Secondly, and more importantly, the second is rule is <em>recursive</em>. This is a very powerful mechanism that perfectly matches the idea of nested environments, which is ubiquitous in programming languages.</p>
 <p>FreshParse wraps sentences into <code>&lt;p&gt;</code> tags. As far as mathematics is concerned, it wraps theorems in <code>&lt;div&gt;</code> tags together with a <code>class</code> attribute, which is useful for CSS styling. For instance,</p>
-<pre><code class="prettyprint">\begin{lemma}
+<pre><code>\begin{lemma}
     Suppose a non-empty partially ordered set P has the property that every non-empty chain has an upper bound in P. Then the set P contains at least one maximal element.
 \end{lemma}
 </code></pre>
 <p>get translated to</p>
-<pre><code>&lt;div class=&quot;lemma&quot;&gt;
+<pre><code class="prettyprint">&lt;div class=&quot;lemma&quot;&gt;
     Suppose a non-empty partially ordered set P has the property that every non-empty chain has an upper bound in P. Then the set P contains at least one maximal element.
  &lt;/div&gt;
 </code></pre>

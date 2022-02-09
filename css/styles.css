@@ -8,7 +8,7 @@ html {
 body {
     margin: 0px;
     background-color: white;
-    color: black;
+    color: #303030;
 }
 
 .container {
@@ -19,24 +19,24 @@ body {
 
 header.page-header > h1 {
     font-size: 4rem;
-    color: black;
+    color: #303030;
 }
 
 h3 {
     margin: 0px;
     padding: 0px;
-    color: black;
+    color: #303030;
     font-family: "EB Garamond", Georgia, serif;
 }
 
 h2 {
-    color: black;
+    color: #303030;
     font-family: "EB Garamond", Georgia, serif;
     padding: 0;
 }
 
 hr {
-    color: black;
+    color: #303030;
     margin: 1px;
 }
 
@@ -63,7 +63,7 @@ hr {
 }
 
 .nav-link-wrapper a {
-    color: black;
+    color: #303030;
     text-decoration: none;
     font-size: 1.4rem;
     font-family: "EB Garamond", Georgia, serif;
@@ -71,7 +71,7 @@ hr {
 
 .nav-link-wrapper a:hover {
     text-decoration: underline;
-    color: black;
+    color: #303030;
 }
 
 main.index-main {
@@ -88,26 +88,26 @@ aside.index-aside {
 
 .index-aside > h1 {
     margin-bottom: 0;
-    color: black;
+    color: #303030;
     font-size: 2.5rem;
     font-weight: normal;
 }
 
 .index-aside > h2 {
-    color: black;
+    color: #303030;
     font-size: 1.7rem;
     font-weight: normal;
 }
 
 .index-main > h1 {
     margin-bottom: 0;
-    color: black;
+    color: #303030;
     font-size: 2.5rem;
     font-weight: normal;
 }
 
 .index-main > h2 {
-    color: black;
+    color: #303030;
     font-size: 1.7rem;
     font-weight: normal;
 }
@@ -140,7 +140,7 @@ a:hover {
 
 div.post > h1.post-title a.post-link {
     font-size: 2.1rem;
-    color: black;
+    color: #303030;
     margin-bottom: 0;
     text-decoration: none;
     font-weight: normal;
@@ -167,4 +167,7 @@ pre code {
     max-width: 100%;
     min-width: 100px;
     padding: 15px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
 }

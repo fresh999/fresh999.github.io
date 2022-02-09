@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FreshBlog | Home</title>
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/post_styles.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+        <script>
+            window.MathJax = {
+                loader: {load: ['[tex]/mathtools']},
+                tex: {
+                    macros: {
+                        isoto: "{\\stackrel{\\sim}{\\smash{\\longrightarrow}\\rule{0pt}{0.4ex}}}"
+                    },
+
+                    tags: 'ams',
+                    packages: {'[+]': ['mathtools']}
+                }
+            };
+
+        </script>
+        <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    </head>
+
+    <body>
+        \(
+            \let\existstemp\exists
+            \let\foralltemp\forall
+            \renewcommand{\exists}{\mkern18mu\existstemp\mkern2mu}
+            \renewcommand{\forall}{\mkern18mu\foralltemp\mkern2mu}
+        \)
+        <header class="page-header">
+            <h1>FreshBlog</h1>
+        </header>
+
+        <div class="container">
+            <hr>
+            <nav class="nav-wrapper">
+                <div class="nav-link-wrapper">
+                    <a href="../index.html">Home</a>
+                </div>
+            </nav>
+            <hr>
+
+            <main class="post-main">
+                <article>
+<h1>Vim and LaTeX - A match made in heaven</h1>
+<p>Hi everyone and welcome back to a brand new post! Today, we are going to take a look at how to configure Vim and setup a LaTeX typesetting workstation.</p>
+<p>First of all, what is Vim? It&rsquo;s the most genius (I&rsquo;m getting deliberately controversial here) text editor ever invented. Its whole phylosophy revolves around the idea that one shouldn&rsquo;t have to move its hands away from the keyboard while typing (it makes sense, right?) and it achieves this by introducing different user modes and viewing keys both as characters and as commands, or actions, according to the mode the user is in. It is also highly configurable and it supports external plug-ins. Lastly, and perhaps most importantly, Vim has its own programming language, called Vimscript, and there lies its true power. The only drawback is its learning curve, which is a bit steeper than mainstream text editors. However, the possibilities Vim unlocks largely outweigh any initial hurdles and you&rsquo;ll find yourself unable to revert to anything you were used to after trying it.</p>
+<p>Let&rsquo;s now see how Vim can turn your LaTeX typesetting on its head.</p>
+<p>Ideally, we would like typeset our code, compile it in place and have it displayed in real time, much like the <a href="https://www.overleaf.com/">Overleaf</a> experience. The problem with Overleaf is two-fold. Firstly, the typing-compiling process is not seamless, as you have to click to compile the document. Secondly, it forces you to work online and to rely on external resources, while it&rsquo;s possible (and highly desirable if you ask me) to store everything locally and just work on your machine.</p>
+<p>Here is my solution.
+First, I set up auto-compilation in my <code>.vimrc</code>, which is the main place where you do your Vim customization. This is done by just adding the following lines of code:</p>
+<pre><code>
+function! Bin()
+    let s:bin_path = Head() . '/bin'
+    if !isdirectory(s:bin_path)
+        call mkdir(s:bin_path)
+    endif
+endfunction
+
+&quot; Compiling LaTeX document
+    nnoremap &lt;leader&gt;c :&lt;C-u&gt; w &lt;bar&gt; call Bin() &lt;bar&gt; ! pdflatex -output-directory=&quot;bin&quot; -synctex=1 -interaction=nonstopmode %:p &lt;cr&gt;&lt;cr&gt;
+
+</code></pre>
+<p>This remaps the sequence <code>&lt;leader&gt;c</code> in <em>normal mode</em> to the command that compiles the document. Here, <code>&lt;leader&gt;</code> is any key you want (I have it mapped to the space bar). So, all you need to do to compile your LaTeX document is to go into normal mode and press that sequence of keys. You can play a similar trick with bibliography compilation:</p>
+<pre><code>
+&quot; Compiling bibliography
+    nnoremap &lt;leader&gt;b :&lt;C-u&gt;! biber --output-directory=bin %:.:r&lt;cr&gt;&lt;cr&gt;
+
+</code></pre>
+<p>To preview the pdf document, we need a pdf reader. I use Zathura, a Vim-like (I wonder why I like it), modular pdf reader that supports auto-refresh and <code>synctex</code>. Then, add the following line of code:</p>
+<pre><code>
+&quot; Previewing pdf document
+nnoremap &lt;leader&gt;p :&lt;C-u&gt;! zathura bin/%:.:r.pdf &amp; disown&lt;cr&gt;&lt;cr&gt;
+
+</code></pre>
+<p>So, <code>&lt;leader&gt;b</code> will compile your bibliography and <code>&lt;leader&gt;p</code> will display the document. Since Zathura supports auto-refresh, you don&rsquo;t need to hit <code>&lt;leader&gt;p</code> every time you want to see the pdf. Simply recompiling will be enough.</p>
+<p>What about those nice drop-down menus with auto-completion suggestions that Overleaf offers? This is where snippet engines come into play. I use <a href="https://github.com/sirver/UltiSnips">UltiSnips</a>, an amazing Vim plug-in that allows you to define your custom snippets for any filetype. Just to give you a taste of what UltiSnips offers, here is one the snippets I use most often:</p>
+<pre><code>
+snippet beg &quot;Generic environment&quot; b
+\begin{$1}
+    ${2:&lt;++&gt;}
+\end{$1}
+endsnippet
+
+</code></pre>
+<p>Suppose you want to insert a list into your LaTeX document. Then, you have to open the <code>itemize</code> enviroment, write your list and then close it:</p>
+<pre><code>
+\begin{itemize}
+    \item First item
+    \item Second item
+\end{itemize}
+
+</code></pre>
+<p>Everyone knows how annoying and repetitive this can get. The above snippet allows you to simply type <code>beg</code> and hit <code>Tab</code> to trigger the expansion of the snippet:</p>
+<pre><code>
+\begin{|}
+    &lt;++&gt;
+\end{}
+
+</code></pre>
+<p>The cursor will automatically end up inside the first set of curly brackets and whatever you type there will automatically also appear in the second set of brackets. Then, with one more <code>Tab</code> hit, the cursor will jump in between the two enviroment delimiters, delete the placeholder <code>&lt;++&gt;</code> and switch to insert mode. Once you are done with your list items, one last <code>Tab</code> hit will take you outside the <code>itemize</code> enviroment. Notice that not once have you had the need of reaching for your mouse!</p>
+<p>Obviously, the customization of Vim doesn&rsquo;t stop here, but I will leave it to your creativity to find new ways of exploiting Vim&rsquo;s features. Enjoy your LaTeX document preparation. Until next time, stay fresh!</p>
+                </article>
+            </main>
+
+            <hr>
+
+            <script src="https://utteranc.es/client.js"
+                    repo="fresh999/fresh999.github.io"
+                    issue-term="url"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+
+            <footer>
+                <hr><hr>
+                FreshBlog 2021
+            </footer>
+        </div>
+    </body>
+</html>

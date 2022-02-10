@@ -152,7 +152,6 @@ div.post > h1.post-title a.post-link:hover {
 
 code {
     font-size: 1rem;
-    padding: 5px;
     background: #F0F0F0;
     border-radius: 5px;
 }
@@ -167,7 +166,5 @@ pre code {
     max-width: 100%;
     min-width: 100px;
     padding: 15px;
-    padding-top: 0;
-    padding-bottom: 0;
     margin: 0;
 }

@@ -16,7 +16,6 @@ Here is my solution.
 First, I set up auto-compilation in my ```.vimrc```, which is the main place where you do your Vim customization. This is done by just adding the following lines of code:
 
 ~~~
-
 function! Bin()
     let s:bin_path = Head() . '/bin'
     if !isdirectory(s:bin_path)
@@ -26,25 +25,20 @@ endfunction
 
 " Compiling LaTeX document
     nnoremap <leader>c :<C-u> w <bar> call Bin() <bar> ! pdflatex -output-directory="bin" -synctex=1 -interaction=nonstopmode %:p <cr><cr>
-
 ~~~
 
 This remaps the sequence `<leader>c` in *normal mode* to the command that compiles the document. Here, `<leader>` is any key you want (I have it mapped to my space bar). So, all you need to do to compile your LaTeX document is to go into normal mode and press that sequence of keys. You can play a similar trick with bibliography compilation:
 
 ~~~
-
 " Compiling bibliography
     nnoremap <leader>b :<C-u>! biber --output-directory=bin %:.:r<cr><cr>
-
 ~~~
 
 To preview the pdf document, we need a pdf reader. I use Zathura, a Vim-like (I wonder why I like it), modular pdf reader that supports auto-refresh and `synctex`. Then, add the following line of code:
 
 ~~~
-
 " Previewing pdf document
 nnoremap <leader>p :<C-u>! zathura bin/%:.:r.pdf & disown<cr><cr>
-
 ~~~
 
 So, `<leader>b` will compile your bibliography and `<leader>p` will display the document. Since Zathura supports auto-refresh, you don't need to hit `<leader>p` every time you want to see the pdf. Simply recompiling will be enough.
@@ -52,34 +46,28 @@ So, `<leader>b` will compile your bibliography and `<leader>p` will display the 
 What about those nice drop-down menus with auto-completion suggestions that Overleaf offers? This is where snippet engines come into play. I use [UltiSnips](https://github.com/sirver/UltiSnips), an amazing Vim plug-in that allows you to define your custom snippets for any filetype. Just to give you a taste of what UltiSnips offers, here is one the snippets I use most often:
 
 ~~~
-
 snippet beg "Generic environment" b
 \begin{$1}
 	${2:<++>}
 \end{$1}
 endsnippet
-
 ~~~
 
 Suppose you want to insert a list into your LaTeX document. Then, you have to open the `itemize` enviroment, write your list and then close it:
 
 ~~~
-
 \begin{itemize}
     \item First item
     \item Second item
 \end{itemize}
-
 ~~~
 
 Everyone knows how annoying and repetitive this can get. The above snippet allows you to simply type `beg` and hit `Tab` to trigger the expansion of the snippet:
 
 ~~~
-
 \begin{|}
     <++>
 \end{}
-
 ~~~
 
 The cursor will automatically end up inside the first set of curly brackets and whatever you type there will automatically also appear in the second set of brackets. Then, with one more `Tab` hit, the cursor will jump in between the two enviroment delimiters, delete the placeholder `<++>` and switch to insert mode. Once you are done with your list items, one last `Tab` hit will take you outside the `itemize` enviroment. Notice that not once have you had the need of reaching for your mouse!

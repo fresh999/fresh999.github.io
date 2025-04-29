@@ -49,29 +49,24 @@
                 <article>
                     <p>Hi everyone and welcome back to a brand new post! It has been a while since I last blogged but at last I am back.</p>
 
-                    <p>Today I wish to discuss an idea in combinatorics that has proven very powerful, so much so that it has been given a name, i.e.\ the \textit{algebraic method}.</p>
-                    <p>Roughly speaking, it is the use of linear algebra or other algebraic techniques in combinatorial situations where solutions, so to speak, are unique or maximal in some sense. This field goes by name of \textit{extremal combinatorics}. Given a collection of objects and some constraint, the typical problem is to determine how large the biggest subset of objects satisfying the constraint can be.</p>
+                    <p>Today I wish to discuss an idea in combinatorics that has proven very powerful, so much so that it has been given a name, i.e. the <em>algebraic method.</em></p>
+                    <p>Roughly speaking, it is the use of linear algebra or other algebraic techniques in combinatorial situations where solutions, so to speak, are unique or maximal in some sense. This field goes by name of <em>extremal combinatorics</em>. Given a collection of objects and some constraint, the typical problem is to determine how large the biggest subset of objects satisfying the constraint can be.</p>
 
                     <p>Let us denote by \( [n] \) the set of numbers \( \{ 1, 2, \dots, n \} \).</p>
                     <div class="definition">
-                        Let \( \mathcal{A} = \{ A_1, \dots, A_m \} \subseteq 2^{[n]} \) be a collection of subsets of \( [n] \). \( \mathcal{A} \) is called an \textit{eventown} if \( \left| A_i \cap A_j \right| \) is even for all \( 1 \leq i, j \leq m \). It is called an \textit{oddtown} if \( \left| A_i \right| \) is odd for all \( i \) and \( \left| A_i \cap A_j \right| \) is even for all \( i \neq j \)
+                        Let \( \mathcal{A} = \{ A_1, \dots, A_m \} \subseteq 2^{[n]} \) be a collection of subsets of \( [n] \). \( \mathcal{A} \) is called an eventown if \( \left| A_i \cap A_j \right| \) is even for all \( 1 \leq i, j \leq m \). It is called an oddtown if \( \left| A_i \right| \) is odd for all \( i \) and \( \left| A_i \cap A_j \right| \) is even for all \( i \neq j \).
                     </div>
 
-                    <p>\begin{problem}[Eventown/Oddtown problem]</p>
-                    <p>How big can an eventown be? What about oddtowns?</p>
-                    <p>\end{problem}</p>
+                    <p>The following is called the Eventown/Oddtown problem.</p>
 
-                    <p>Here is a claim.</p>
-
-                    <p>\begin{claim}</p>
-                    <p>If \( \mathcal{A} \) is an eventown, then \( \left| \mathcal{A} \right| \leq 2^{\lfloor n/2 \rfloor} \). Moreover, the bound is sharp.\label{item:i}</p>
-                    <p>\end{claim}</p>
+                    <p><b>Problem.</b> How big can an eventown be? What about oddtowns?</p>
+                    <p><b>Claim.</b> If \( \mathcal{A} \) is an eventown, then \( \left| \mathcal{A} \right| \leq 2^{\lfloor n/2 \rfloor} \). Moreover, the bound is sharp.</p>
                     <div class="proof">
                         The key idea is to represent every subset of \( [n] \) as an element in \( \mathbb{F}_2^n \), where the \( i \)-th coordinate is \( 1 \) if \( i \) is in the subset, otherwise it is \( 0 \). If we denote the subsets by \( a_1, \dots, a_m \in \mathbb{F}_2^n \), then the eventown condition means that \( \langle a_i, a_j \rangle = 0 \) for all \( i, j \). Here, \( \langle x, y \rangle = \sum_{i = 0}^n x_iy_i \) is the standard inner product, which is nondegenerate. Since we are working over \( \mathbb{F}_2 \) it is not definite, but we will not need such property. If we let \( V = \operatorname{span}(a_1, \dots, a_m) \), then we have that
                         \begin{equation*}
                             V \subseteq V^{\perp}.
                         \end{equation*}
-                        In symplectic terms, one would say that \( V \) is \textit{isotropic}. Nondegeneracy of \( \langle \cdot{, \cdot} \rangle \) implies that \( \dim V + \dim V^{\perp} = n \). Hence, \( \dim V \leq \lfloor n/2 \rfloor \) and the bound on the size of \( \mathcal{A} \) is established.
+                        In symplectic terms, one would say that \( V \) is isotropic. Nondegeneracy of \( \langle \cdot{, \cdot} \rangle \) implies that \( \dim V + \dim V^{\perp} = n \). Hence, \( \dim V \leq \lfloor n/2 \rfloor \) and the bound on the size of \( \mathcal{A} \) is established.
                         As far as sharpness is concerned, take \( n = 4 \) for the sake of simplicity. Then, the following eventown is optimal:
                         \begin{equation*}
                             (0, 0, 0, 0), (0, 0, 1, 1), (1, 1, 0, 0), (1, 1, 1, 1).
@@ -80,9 +75,7 @@
 
                     <p>What about oddtowns? Once again, we make a bold claim.</p>
 
-                    <p>\begin{claim}</p>
-                    <p>If \( \mathcal{A} \) is an oddtown, then \( \left| \mathcal{A} \right| \leq n \). Again, the bound is sharp.\label{item:ii}</p>
-                    <p>\end{claim}</p>
+                    <p><b>Claim.</b> If \( \mathcal{A} \) is an oddtown, then \( \left| \mathcal{A} \right| \leq n \). Again, the bound is sharp.</p>
                     <div class="proof">
                         Note that the oddtown condition means that
                         \begin{equation*}
@@ -100,7 +93,6 @@
 
 
                     <p>We have only scratched the surface with the Eventown/Oddtown problem. As it often happens in maths, it is the unlikeliest of combinations that turn out to be the most fruitful, and in this regard linear algebra and combinatorics definitely strike as an offbeat duo. We will explore further consequences and ramifications of these ideas in future posts but I'll be signing off for now. Stay fresh!</p>
-
                 </article>
             </main>
 

@@ -1,0 +1,57 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{titlesec}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\hypersetup{
+    colorlinks=true,
+    allcolors=black,
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+\newtheorem{claim}[definition]{Claim}
+
+
+\renewcommand\qedsymbol{$\square$}
+\renewcommand{\theenumi}{(\roman{enumi})}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\usepackage[toc]{appendix}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage[inline]{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathtools}
+\usepackage{physics}
+%\usepackage{subfiles}
+\usepackage{tikz-cd}
+
+\begin{document}
+
+Hi everyone and welcome back to a brand new post! It has been a while since I've last blogged but I am back with new fresh (of course) new ideas.
+
+Today I want to share a cute little lemma that I encountered recently which relates to zeroes of vector fields. It roughly states that pairs of zeroes of opposite sign can be removed by a controlled homotopy, i.e.\ one that does create any new zeroes. The idea of canceling singularities of opposite signs in pair is ubiquitous in the study of smooth dynamical systems and it even shows up in contact topology, where one often needs to manipulate the singularities of characteristic foliations on convex surfaces.
+
+The setup is as follows. Let \( \Sigma \) be a compact connected surface and \( X \in \mathfrak{X}(\Sigma) \) be a vector field with no degenerate zeroes, which means that if \( X(p) = 0 \), then \( X \) is transverse to the zero section of \( T \Sigma \) at \( p \). Suppose \( p, q \) are distinct zeroes of \( X \) and that they have different signs (recall that the sign of a nondegenerate zero is just the sign of the determinant of \( DX \) at that point). Connect \( p \) and \( q \) via an arc \( \gamma \) and choose a neighborhood \( U \) of \( \gamma \) that does not contain any other zeroes of \( X \).
+
+\begin{claim}
+    There exists a homotopy \( X_t \), fixed outside a neighborhood \( V \subseteq U \) of \( \gamma \), such that \( X_0 = X \) and \( X_1 \)
+\end{claim}
+
+
+
+\end{document}

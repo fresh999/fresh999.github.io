@@ -30,7 +30,7 @@ items: env {print_indentation(indent_level); printf("</li>\n");}
      ;
 ```
 
-The first rule defines a theorem-like environment (the vertical bar `|` is a logical or). No C code is executed in this case. The second rules, instead, specifies what the content of a list should look like. First of all, note that this time C code is executed. Secondly, and more importantly, the second is rule is *recursive*. This is a very powerful mechanism that perfectly matches the idea of nested environments, which is ubiquitous in programming languages.
+The first rule defines a theorem-like environment (the vertical bar `|` is a logical or). No C code is executed in this case. The second rule, instead, specifies what the content of a list should look like. First of all, note that this time C code is executed. Secondly, and more importantly, the second is rule is *recursive*. This is a very powerful mechanism that perfectly matches the idea of nested environments, which is ubiquitous in programming languages.
 
 FreshParse wraps sentences into `<p>` tags. As far as mathematics is concerned, it wraps theorems in `<div>` tags together with a `class` attribute, which is useful for CSS styling. For instance,
 
@@ -47,7 +47,7 @@ get translated to
  </div>
 ```
 
-Also, it recognizes displayed math environments, such as `\begin{equation}` and does not alter them, as [MathJax](https://www.mathjax.org) is capable of rendering them. Finally, it can processes lists by wrapping them in `<ol>` (or `<ul>`) tags.
+Also, it recognizes displayed math environments, such as `\begin{equation}` and does not alter them, as [MathJax](https://www.mathjax.org) is capable of rendering them. Finally, it can process lists by wrapping them in `<ol>` (or `<ul>`) tags.
 
 The code for FreshParse is available at [fresh999/FreshParse](https://github.com/fresh999/FreshParse). You are welcome to check it out and play with it. Comments and feedback are also highly appreciated!
 

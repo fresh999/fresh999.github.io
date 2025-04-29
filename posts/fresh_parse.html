@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FreshBlog | Home</title>
+        <title>The FreshBlog | Home</title>
         <link rel="stylesheet" href="../css/styles.css">
         <link rel="stylesheet" href="../css/post_styles.css">
 
@@ -32,14 +32,8 @@
     </head>
 
     <body>
-        \(
-            \let\existstemp\exists
-            \let\foralltemp\forall
-            \renewcommand{\exists}{\mkern18mu\existstemp\mkern2mu}
-            \renewcommand{\forall}{\mkern18mu\foralltemp\mkern2mu}
-        \)
         <header class="page-header">
-            <h1>FreshBlog</h1>
+            <h1>The FreshBlog</h1>
         </header>
 
         <div class="container">
@@ -73,7 +67,11 @@ items: env {print_indentation(indent_level); printf(&quot;&lt;/li&gt;\n&quot;);}
      | items item
      ;
 </code></pre>
+<<<<<<< HEAD
 <p>The first rule defines a theorem-like environment (the vertical bar <code>|</code> is a logical or). No C code is executed in this case. The second rules, instead, specifies what the content of a list should look like. First of all, note that this time C code is executed. Secondly, and more importantly, the second is rule is <em>recursive</em>. This is a very powerful mechanism that perfectly matches the idea of nested environments, and it is ubiquitous in programming languages.</p>
+=======
+<p>The first rule defines a theorem-like environment (the vertical bar <code>|</code> is a logical or). No C code is executed in this case. The second rule, instead, specifies what the content of a list should look like. First of all, note that this time C code is executed. Secondly, and more importantly, the second is rule is <em>recursive</em>. This is a very powerful mechanism that perfectly matches the idea of nested environments, which is ubiquitous in programming languages.</p>
+>>>>>>> a34e1ec38a437b3a86a70fda95e2914fda20614b
 <p>FreshParse wraps sentences into <code>&lt;p&gt;</code> tags. As far as mathematics is concerned, it wraps theorems in <code>&lt;div&gt;</code> tags together with a <code>class</code> attribute, which is useful for CSS styling. For instance,</p>
 <pre><code>\begin{lemma}
     Suppose a non-empty partially ordered set P has the property that every non-empty chain has an upper bound in P. Then the set P contains at least one maximal element.
@@ -84,7 +82,7 @@ items: env {print_indentation(indent_level); printf(&quot;&lt;/li&gt;\n&quot;);}
     Suppose a non-empty partially ordered set P has the property that every non-empty chain has an upper bound in P. Then the set P contains at least one maximal element.
  &lt;/div&gt;
 </code></pre>
-<p>Also, it recognizes displayed math environments, such as <code>\begin{equation}</code> and does not alter them, as <a href="https://www.mathjax.org">MathJax</a> is capable of rendering them. Finally, it can processes lists by wrapping them in <code>&lt;ol&gt;</code> (or <code>&lt;ul&gt;</code>) tags.</p>
+<p>Also, it recognizes displayed math environments, such as <code>\begin{equation}</code> and does not alter them, as <a href="https://www.mathjax.org">MathJax</a> is capable of rendering them. Finally, it can process lists by wrapping them in <code>&lt;ol&gt;</code> (or <code>&lt;ul&gt;</code>) tags.</p>
 <p>The code for FreshParse is available at <a href="https://github.com/fresh999/FreshParse">fresh999/FreshParse</a>. You are welcome to check it out and play with it. Comments and feedback are also highly appreciated!</p>
 <p>That&rsquo;s it for this one, folks! Till next time, stay fresh!</p>
                 </article>
@@ -102,7 +100,7 @@ items: env {print_indentation(indent_level); printf(&quot;&lt;/li&gt;\n&quot;);}
 
             <footer>
                 <hr><hr>
-                FreshBlog 2021
+                The FreshBlog 2021
             </footer>
         </div>
     </body>
